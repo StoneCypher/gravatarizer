@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+
+  <head>
+    <script type="text/javascript" src="sparkmd5.min.js"></script>
+    <script type="text/javascript">
+
+      function byId(X) {
+      	return document.getElementById(X);
+      }
+
+      function update() {
+      	var Hash = SparkMD5.hash(byId('tgt').value.trim().toLowerCase());
+      	byId('current').innerHTML = Hash;
+      	byId('cimg').src          = 'http://www.gravatar.com/avatar/' + Hash;
+      	byId('cimg40').src        = 'http://www.gravatar.com/avatar/' + Hash + '?s=40';
+      	byId('cimg200').src       = 'http://www.gravatar.com/avatar/' + Hash + '?s=200';
+      }
+
+      function start() {
+      	update();
+      }
+
+    </script>
+  </head>
+
+  <body onload="start();">
+
+    <input type="text" onkeyup="update();" id="tgt">
+
+    <br/><br/>
+    <img id="cimg200">
+    <img id="cimg">
+    <img id="cimg40">
+    <div id="current"></div>
+    <div id="prior"></div>
+
+
+  </body>
+
+</html>
